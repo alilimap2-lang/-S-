@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>考古加 S 级视频下载器</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <main>
+    <h1>考古加 S 级视频</h1>
+    <p class="hint">仅处理当前列表页中账号可见的素材。</p>
+    <label>投放时间
+      <select id="timeRange">
+        <option value="3">3天以内</option>
+        <option value="7">7天以内</option>
+        <option value="14">14天以内</option>
+        <option value="30">30天以内</option>
+        <option value="over30">30天以上</option>
+      </select>
+    </label>
+    <label class="check"><input id="dryRun" type="checkbox"> 只扫描，不下载</label>
+    <button id="start">扫描并下载</button>
+    <button id="stop" class="secondary" disabled>停止</button>
+    <div id="status">等待开始</div>
+    <progress id="progress" value="0" max="1"></progress>
+    <div class="stats">
+      <span>一共 <b id="totalAll">0</b></span>
+      <span>识别 <b id="found">0</b></span>
+      <span>下载 <b id="ok">0</b></span>
+      <span>失败 <b id="failed">0</b></span>
+    </div>
+    <div id="report" class="report">运行报告：尚未运行</div>
+    <button id="export" class="secondary" disabled>导出 CSV 清单</button>
+    <button id="exportDebug" class="secondary" disabled>导出纠错报告</button>
+  </main>
+  <script src="popup.js"></script>
+</body>
+</html>

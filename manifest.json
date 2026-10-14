@@ -1,0 +1,31 @@
+{
+  "manifest_version": 3,
+  "name": "考古加 S 级视频下载器",
+  "version": "1.9.0",
+  "description": "扫描考古加直播引流素材页的 S 级视频，提取真实媒体地址并按标题下载。",
+  "permissions": ["activeTab", "downloads", "storage", "scripting"],
+  "host_permissions": [
+    "https://ad.kaogujia.com/*",
+    "https://*.kaogujia.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "下载考古加 S 级视频",
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://ad.kaogujia.com/list/live*"],
+      "js": ["page-hook.js"],
+      "run_at": "document_start",
+      "world": "MAIN"
+    },
+    {
+      "matches": ["https://ad.kaogujia.com/list/live*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
